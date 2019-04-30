@@ -1,0 +1,27 @@
+<h2 class="content-subhead">Search</h2>
+
+<form action="/search" method="get">
+  <input name="query" value="<%= params[:query] %>">
+  <button type="submit">Search</button>
+</form>
+
+<% if @arr.empty? %>
+  <br><%= no_matches %>
+<% end %>
+
+<h3>Results for '<%= @searching %>' </h3>
+
+</ul>
+  <% @real_zip.each do |x, y| %>
+    <li>
+     <a href="/chapters/<%= x[0] %>"><strong><%= x[1] %></strong></a>
+       <% y.each do |line| %>
+        <ul>
+        <li><a href="/chapters/<%= x[0] %>"><%= line  %></a></li>
+        </ul>
+       <% end %>
+    </li>
+   <% end %>
+</ul>
+
+
